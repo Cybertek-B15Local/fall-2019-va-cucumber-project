@@ -26,4 +26,9 @@ public class LoginStepDefs {
         System.out.println("Logging in as a student");
     }
 
+    @When("I login as an admin")
+    public void i_login_as_a_admin() {
+        System.out.println("Logging in as an admin");
+    }
+
 }
