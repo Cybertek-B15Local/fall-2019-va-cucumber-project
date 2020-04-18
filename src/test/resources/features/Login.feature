@@ -2,13 +2,13 @@
 Feature: Login
   As I user, I should be able to login
 
-  @librarian @staff  @wip
+  @librarian @staff
   Scenario: Login as a librarian
     Given I am on the login page
     When I login as a librarian
     Then dashboard should be displayed
 
-  @student
+  @student @wip
   Scenario: Login as a student
     Given I am on the login page
     When I login as a student
@@ -19,4 +19,3 @@ Feature: Login
     Given I am on the login page
     When I login as an admin
     Then dashboard should be displayed
-
