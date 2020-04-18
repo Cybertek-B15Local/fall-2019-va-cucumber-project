@@ -6,6 +6,7 @@ import com.cybertek.library.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LoginStepDefs {
     LoginPage loginPage = new LoginPage();
@@ -31,6 +32,8 @@ public class LoginStepDefs {
     @Then("dashboard should be displayed")
     public void dashboard_should_be_displayed() {
         System.out.println("Verifying dashboard page");
+        String actualTitle = Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(actualTitle.endsWith("dashboard"));
     }
 
     @When("I login as a student")
