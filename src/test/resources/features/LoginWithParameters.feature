@@ -18,4 +18,7 @@ Feature: Login with parameters
     And there should be 24234 users
 
   @wip
-  Scenario:
+  Scenario: Login as librarian same line
+    Given I am on the login page
+    When I login using "librarian12@library" and "AOYKYTMJ"
+    Then dashboard should be displayed

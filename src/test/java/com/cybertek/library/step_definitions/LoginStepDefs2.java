@@ -1,6 +1,5 @@
 package com.cybertek.library.step_definitions;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -26,4 +25,8 @@ public class LoginStepDefs2 {
         System.out.println("Verifying user count "+ count);
     }
 
+    @When("I login using {string} and {string}")
+    public void i_login_using_and(String username, String password) {
+        System.out.println("Logging in using "+ username + " and "+ password);
+    }
 }
