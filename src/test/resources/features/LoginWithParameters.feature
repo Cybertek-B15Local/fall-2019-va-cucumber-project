@@ -1,6 +1,5 @@
 Feature: Login with parameters
 
-
   Scenario: Login as librarian 11
     Given I am on the login page
     When I enter username "librarian11@library"
