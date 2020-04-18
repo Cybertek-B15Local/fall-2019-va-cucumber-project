@@ -8,10 +8,14 @@ Feature: Login with parameters
     And click the sign in button
     Then dashboard should be displayed
 
-  @wip
+
   Scenario: Login as librarian 12
     Given I am on the login page
     When I enter username "librarian12@library"
     And I enter password 'AOYKYTMJ'
     And click the sign in button
     Then dashboard should be displayed
+    And there should be 24234 users
+
+  @wip
+  Scenario:

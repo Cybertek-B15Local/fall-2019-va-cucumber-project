@@ -1,5 +1,7 @@
 package com.cybertek.library.step_definitions;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginStepDefs2 {
@@ -18,4 +20,10 @@ public class LoginStepDefs2 {
     public void click_the_sign_in_button() {
         System.out.println("Clicking on sign in button");
     }
+
+    @Then("there should be {int} users")
+    public void there_should_be_users(Integer count) {
+        System.out.println("Verifying user count "+ count);
+    }
+
 }
