@@ -29,4 +29,9 @@ public class LoginStepDefs2 {
     public void i_login_using_and(String username, String password) {
         System.out.println("Logging in using "+ username + " and "+ password);
     }
+
+    @Then("there should be {int} {string}")
+    public void there_should_be(Integer count, String type) {
+        System.out.println("Verifying "+ count+ " "+type);
+    }
 }

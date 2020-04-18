@@ -22,3 +22,4 @@ Feature: Login with parameters
     Given I am on the login page
     When I login using "librarian12@library" and "AOYKYTMJ"
     Then dashboard should be displayed
+    And there should be 23 'users'
