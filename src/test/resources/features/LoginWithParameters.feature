@@ -1,9 +1,17 @@
 Feature: Login with parameters
 
-  @wip
+
   Scenario: Login as librarian 11
     Given I am on the login page
     When I enter username "librarian11@library"
-    And I enter password "I61FFPPf"
+    And I enter password 'I61FFPPf'
+    And click the sign in button
+    Then dashboard should be displayed
+
+  @wip
+  Scenario: Login as librarian 12
+    Given I am on the login page
+    When I enter username "librarian12@library"
+    And I enter password 'AOYKYTMJ'
     And click the sign in button
     Then dashboard should be displayed
