@@ -39,6 +39,6 @@ public class PageNavigationStepDefs {
                 Assert.assertEquals("Book Management", actual);
                 break;
         }
-    }
 
+    }
 }
