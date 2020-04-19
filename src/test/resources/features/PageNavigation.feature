@@ -1,3 +1,4 @@
+@smoke @lib-132 @navigation
 Feature: Page navigation links
 
   # login as librarian
@@ -20,3 +21,10 @@ Feature: Page navigation links
     And I login as a librarian
     When I click on "Books" link
     Then "Books" page should be displayed
+
+  Scenario: Go to dashboard page
+    Given I am on the login page
+    And I login as a librarian
+    And I click on "Books" link
+    When I click on "Dashboard" link
+    Then "Dashboard" page should be displayed
