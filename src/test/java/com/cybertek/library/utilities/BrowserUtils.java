@@ -51,8 +51,7 @@ public class BrowserUtils {
     }
 
     /**
-     * return a list of string from a list of elements ignores any element with no
-     * text
+     * return a list of string from a list of web elements
      *
      * @param list
      * @return
