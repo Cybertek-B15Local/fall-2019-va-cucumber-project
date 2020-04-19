@@ -21,4 +21,5 @@ public abstract class PageBase {
 
     @FindBy(tagName = "h3")
     public WebElement pageHeader;
+
 }
