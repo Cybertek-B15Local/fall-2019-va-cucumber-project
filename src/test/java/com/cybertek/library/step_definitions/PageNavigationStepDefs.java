@@ -1,6 +1,7 @@
 package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.DashBoardPage;
+import com.cybertek.library.utilities.BrowserUtils;
 import com.cybertek.library.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,6 +28,7 @@ public class PageNavigationStepDefs {
     @Then("{string} page should be displayed")
     public void page_should_be_displayed(String page) {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().endsWith(page.toLowerCase()));
+        BrowserUtils.wait(1);
         switch (page.toLowerCase()) {
             case "users":
                 String actual = dashBoardPage.pageHeader.getText();
