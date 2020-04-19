@@ -66,5 +66,17 @@ public class PageNavigationStepDefs {
 
     }
 
+    @When("I select Show {int} records")
+    public void i_select_Show_records(Integer option) {
+        usersPage.getShowRecords().selectByVisibleText(option.toString());
+    }
+
+    @Then("the users table must display {int} records")
+    public void the_users_table_must_display_records(int expectedCount) {
+        int actualCount = usersPage.allRows.size();
+        Assert.assertEquals(expectedCount, actualCount);
+
+    }
+
 
 }
