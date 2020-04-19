@@ -1,3 +1,4 @@
+@show_records @smoke @regression @lib-7031
 Feature: Show records functionality
 
   Background:
@@ -16,8 +17,8 @@ Feature: Show records functionality
       | 200 |
       | 500 |
 
-  @wip
     Scenario: Change number of rows in Users page
       And I click on "Users" link
       When I select Show 50 records
-      Then the users table must display 50 records
+      Then show records default value should be 50
+      And the users table must display 50 records

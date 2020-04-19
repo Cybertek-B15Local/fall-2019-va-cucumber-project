@@ -8,6 +8,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -73,6 +75,7 @@ public class PageNavigationStepDefs {
 
     @Then("the users table must display {int} records")
     public void the_users_table_must_display_records(int expectedCount) {
+        BrowserUtils.wait(1);
         int actualCount = usersPage.allRows.size();
         Assert.assertEquals(expectedCount, actualCount);
 
