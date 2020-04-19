@@ -1,11 +1,13 @@
 package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.DashBoardPage;
+import com.cybertek.library.pages.UsersPage;
 import com.cybertek.library.utilities.BrowserUtils;
 import com.cybertek.library.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -47,6 +49,10 @@ public class PageNavigationStepDefs {
     @Then("show records default value should be {int}")
     public void show_records_default_value_should_be(Integer selected) {
         System.out.println("selected = " + selected);
+        UsersPage usersPage = new UsersPage();
+        String actual = usersPage.getShowRecords().getFirstSelectedOption().getText();
+        Assert.assertEquals(selected+"", actual);
+
     }
 
     @Then("show records should have following options:")
