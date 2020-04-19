@@ -2,8 +2,8 @@
 Feature: Page navigation links
 
   Background:
-    And I login as a librarian
     Given I am on the login page
+    And I login as a librarian
 
   @db
   Scenario: Go to users page
@@ -18,7 +18,6 @@ Feature: Page navigation links
     And I click on "Books" link
     When I click on "Dashboard" link
     Then "Dashboard" page should be displayed
-
 
     # login as librarian
   # click on the users link
