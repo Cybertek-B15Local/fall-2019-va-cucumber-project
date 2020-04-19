@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.List;
+
 public class PageNavigationStepDefs {
     DashBoardPage dashBoardPage = new DashBoardPage();
 
@@ -39,6 +41,19 @@ public class PageNavigationStepDefs {
                 Assert.assertEquals("Book Management", actual);
                 break;
         }
-
     }
+
+
+    @Then("show records default value should be {int}")
+    public void show_records_default_value_should_be(Integer selected) {
+        System.out.println("selected = " + selected);
+    }
+
+    @Then("show records should have following options:")
+    public void show_records_should_have_following_options(List<String> options) {
+        System.out.println("options.size() = " + options.size());
+        System.out.println(options);
+    }
+
+
 }
