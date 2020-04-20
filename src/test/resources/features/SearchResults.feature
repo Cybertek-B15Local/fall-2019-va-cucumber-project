@@ -1,4 +1,4 @@
-@lib-2423
+@lib-2423 @smoke @regression
 Feature: Search functionality on the users page
 
   Background:
@@ -10,7 +10,7 @@ Feature: Search functionality on the users page
     When I search for "test"
     Then table should contain rows with "test"
 
-  @wip
+
   Scenario: Table columns names
     Then table should have following column names:
       | Actions   |
