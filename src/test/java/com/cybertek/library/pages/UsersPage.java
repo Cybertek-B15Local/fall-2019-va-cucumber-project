@@ -13,7 +13,12 @@ public class UsersPage extends PageBase {
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> allRows;
 
+    @FindBy(tagName = "input")
+    public WebElement search;
+
     public Select getShowRecords(){
         return new Select(showRecords);
     }
+
+
 }
