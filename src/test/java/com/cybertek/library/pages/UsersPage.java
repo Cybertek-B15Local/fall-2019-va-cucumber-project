@@ -16,6 +16,15 @@ public class UsersPage extends PageBase {
     @FindBy(tagName = "input")
     public WebElement search;
 
+    @FindBy(xpath = "//table/tbody/tr/td[2]")
+    public List<WebElement> allUserIds;
+
+    @FindBy(xpath = "//table/tbody/tr/td[3]")
+    public List<WebElement> allFullNames;
+
+    @FindBy(xpath = "//table/tbody/tr/td[4]")
+    public List<WebElement> allEmails;
+
     public Select getShowRecords(){
         return new Select(showRecords);
     }
