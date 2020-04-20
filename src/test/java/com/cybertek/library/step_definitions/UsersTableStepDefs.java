@@ -5,6 +5,8 @@ import com.cybertek.library.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class UsersTableStepDefs {
@@ -36,5 +38,14 @@ public class UsersTableStepDefs {
         }
 
     }
+
+    @Then("table should have following column names:")
+    public void table_should_have_following_column_names(List<String> expectedColumnsNames) {
+        System.out.println(expectedColumnsNames);
+        List<String> actualColumnsNames = BrowserUtils.getElementsText(usersPage.columnNames);
+        assertEquals(expectedColumnsNames, actualColumnsNames);
+
+    }
+
 
 }

@@ -25,6 +25,9 @@ public class UsersPage extends PageBase {
     @FindBy(xpath = "//table/tbody/tr/td[4]")
     public List<WebElement> allEmails;
 
+    @FindBy(tagName = "th")
+    public List<WebElement> columnNames;
+
     public Select getShowRecords(){
         return new Select(showRecords);
     }
