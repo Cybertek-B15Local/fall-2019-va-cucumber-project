@@ -61,6 +61,8 @@ public class LoginStepDefs {
         String password = credentials.get("password");
         System.out.println("email = " + email);
         System.out.println("password = " + password);
+
+        loginPage.login(email, password);
     }
 
 }
