@@ -2,8 +2,10 @@ package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.UsersPage;
 import com.cybertek.library.utilities.BrowserUtils;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -30,11 +32,11 @@ public class UsersTableStepDefs {
             String email = usersPage.allEmails.get(i).getText().toLowerCase();
 
             System.out.println("ROW: " + (i + 1));
-            System.out.println(id + "\t" + name + "\t"+email);
+            System.out.println(id + "\t" + name + "\t" + email);
 
             boolean found = id.contains(expectedString) ||
-                            name.contains(expectedString) ||
-                            email.contains(expectedString);
+                    name.contains(expectedString) ||
+                    email.contains(expectedString);
             assertTrue(found);
         }
 
@@ -51,7 +53,30 @@ public class UsersTableStepDefs {
 
     @Then("table should contain this data")
     public void table_should_contain_this_data(Map<String, String> user) {
+        System.out.println(user.entrySet());
 
+        String name = user.get("Full Name");
+        String email = user.get("Email");
+        String id = user.get("User ID");
+        System.out.println("name = " + name);
+        System.out.println("email = " + email);
+        System.out.println("id = " + id);
+
+        // get all rows. verify that at least one of the rows contains all of the user info
+        List<WebElement> allRows = usersPage.allRows;
+        List<String> allRowsTxt = BrowserUtils.getElementsText(allRows);
+
+        boolean found = true;
+        for (String row : allRowsTxt) {
+            System.out.println("row = " + row);
+            found = row.contains(id) &&
+                    row.contains(name) &&
+                    row.contains(email);
+            if (found) {
+                break;
+            }
+        }
+        assertTrue(user + " was not found", found);
     }
 
 }
