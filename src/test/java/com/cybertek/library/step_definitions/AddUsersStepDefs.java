@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class AddUsersStepDefs {
 
@@ -41,6 +41,9 @@ public class AddUsersStepDefs {
         assertEquals("Password placeholder value did not match",
                 expectedPassword, actualPassword);
 
+        String actualAddress = usersPage.address.getAttribute("placeholder");
+        assertEquals("Address placeholder must be empty",
+                "", actualAddress);
     }
 
 }
