@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class UsersPage extends PageBase {
-    @FindBy (name = "tbl_users_length")
+    @FindBy(name = "tbl_users_length")
     public WebElement showRecords;
 
     @FindBy(xpath = "//table/tbody/tr")
@@ -28,7 +28,19 @@ public class UsersPage extends PageBase {
     @FindBy(tagName = "th")
     public List<WebElement> columnNames;
 
-    public Select getShowRecords(){
+    @FindBy(css = "a.btn-lg")
+    public WebElement addUsers;
+
+    @FindBy(name = "full_name")
+    public WebElement fullName;
+
+    @FindBy(name = "password")
+    public WebElement password;
+
+    @FindBy(name = "email")
+    public WebElement email;
+
+    public Select getShowRecords() {
         return new Select(showRecords);
     }
 
