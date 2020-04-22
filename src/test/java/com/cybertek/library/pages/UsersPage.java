@@ -43,6 +43,9 @@ public class UsersPage extends PageBase {
     @FindBy(id = "address")
     public WebElement address;
 
+    @FindBy(css="a.page-link:not([title])")
+    public List<WebElement> pagesList;
+
     public Select getShowRecords() {
         return new Select(showRecords);
     }
