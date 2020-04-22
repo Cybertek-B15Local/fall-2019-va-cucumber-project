@@ -8,8 +8,10 @@ import io.cucumber.java.en.When;
 import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -86,6 +88,14 @@ public class UsersTableStepDefs {
         BrowserUtils.wait(1);
 
         List<String> list = BrowserUtils.getElementsText(usersPage.allUserIds);
+        System.out.println(list);
+
+        Set<String> set = new HashSet<>();
+        set.addAll(list);
+        System.out.println(set);
+
+        assertEquals(list.size(), set.size());
+
     }
 
 
