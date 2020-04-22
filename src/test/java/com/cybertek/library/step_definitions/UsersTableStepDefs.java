@@ -90,8 +90,7 @@ public class UsersTableStepDefs {
         List<String> list = BrowserUtils.getElementsText(usersPage.allUserIds);
         System.out.println(list);
 
-        Set<String> set = new HashSet<>();
-        set.addAll(list);
+        Set<String> set = new HashSet<>(list);
         System.out.println(set);
 
         assertEquals(list.size(), set.size());
