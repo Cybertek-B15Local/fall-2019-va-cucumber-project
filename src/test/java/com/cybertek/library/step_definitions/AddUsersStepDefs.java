@@ -44,6 +44,10 @@ public class AddUsersStepDefs {
         String actualAddress = usersPage.address.getAttribute("placeholder");
         assertEquals("Address placeholder must be empty",
                 "", actualAddress);
+
+
+        String myString;
+        String yourString="";
     }
 
 }
