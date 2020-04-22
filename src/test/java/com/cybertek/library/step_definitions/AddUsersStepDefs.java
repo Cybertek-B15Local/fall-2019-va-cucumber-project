@@ -28,8 +28,24 @@ public class AddUsersStepDefs {
 
         String expectedFullname = fields.get("fullname");
         String actualFullName = usersPage.fullName.getAttribute("placeholder");
-        assertEquals(expectedFullname, actualFullName);
+        assertEquals("Full Name placeholder value did not match",
+                expectedFullname, actualFullName);
+
+        String expectedEmail = fields.get("email");
+        String actualEmail = usersPage.email.getAttribute("placeholder");
+        assertEquals("Email placeholder value did not match",
+                expectedEmail, actualEmail);
+
+        String expectedPassword = fields.get("password");
+        String actualPassword = usersPage.password.getAttribute("placeholder");
+        assertEquals("Password placeholder value did not match",
+                expectedPassword, actualPassword);
 
     }
 
 }
+
+
+
+
+

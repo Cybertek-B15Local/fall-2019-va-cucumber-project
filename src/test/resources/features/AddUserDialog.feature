@@ -12,3 +12,4 @@ Feature: Add new users dialog
       | fullname | Full Name |
       | email    | Email     |
       | password | Password  |
+      | Address  |           |

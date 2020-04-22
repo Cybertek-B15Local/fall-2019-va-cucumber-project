@@ -40,6 +40,9 @@ public class UsersPage extends PageBase {
     @FindBy(name = "email")
     public WebElement email;
 
+    @FindBy(id = "address")
+    public WebElement address;
+
     public Select getShowRecords() {
         return new Select(showRecords);
     }
