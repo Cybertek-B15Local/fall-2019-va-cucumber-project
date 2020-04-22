@@ -1,6 +1,5 @@
 Feature: Users table
 
-  @wip
   Scenario: unique user ids
     Given I am on the login page
     And I login as a librarian

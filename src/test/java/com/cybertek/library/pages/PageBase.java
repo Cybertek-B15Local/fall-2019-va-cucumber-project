@@ -22,4 +22,10 @@ public abstract class PageBase {
     @FindBy(tagName = "h3")
     public WebElement pageHeader;
 
+    @FindBy(css = "#navbarDropdown>span")
+    public WebElement accountHolderName;
+
 }
+/// # --> means id in css
+// #navbarDropdown --> any element that has id navbarDropdown
+//     //*[@id='navbarDropdown']
