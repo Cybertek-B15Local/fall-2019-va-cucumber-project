@@ -50,7 +50,6 @@ Feature: User account tests
       | student44@library   | BIXPElK5 | Test Student 44   |
 
 
-  @wip
   Scenario Template: Another verify user information <name>
     Given I am on the login page
     When I login using following credentials:
@@ -58,9 +57,19 @@ Feature: User account tests
       | password | <password> |
     Then account holder name should be "<name>"
 
-
     Scenarios:
       | email             | password | name            |
       | student27@library | kkMksO2i | Test Student 27 |
       | student28@library | 19Ceq2sT | Test Student 28 |
       | student29@library | WyIUNpDI | Test Student 29 |
+
+  @wip
+  Scenario Outline: Verify dashboard page
+    Given I am on the login page
+    When I login as a <user>
+    Then "Dashboard" page should be displayed
+
+    Examples:
+      | user      |
+      | librarian |
+      | student   |

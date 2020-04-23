@@ -46,6 +46,9 @@ public class LoginStepDefs {
     @When("I login as a student")
     public void i_login_as_a_student() {
         System.out.println("Logging in as a student");
+        String email = ConfigurationReader.getProperty("student_email");
+        String password = ConfigurationReader.getProperty("student_password");
+        loginPage.login(email, password);
     }
 
     @When("I login as an admin")
