@@ -15,7 +15,7 @@ public class Hooks {
     public void setUpScenario() {
         System.out.println("set up browser");
         Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        Driver.getDriver().manage().window().fullscreen();
+//        Driver.getDriver().manage().window().fullscreen();
     }
 
     @Before(value = "@db", order = 1)

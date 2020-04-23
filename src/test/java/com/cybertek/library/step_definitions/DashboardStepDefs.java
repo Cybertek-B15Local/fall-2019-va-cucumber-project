@@ -15,5 +15,4 @@ public class DashboardStepDefs {
         assertEquals("Account holder name did not match",
                                             expectedName, actualName);
     }
-
 }
