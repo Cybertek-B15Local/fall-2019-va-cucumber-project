@@ -63,7 +63,6 @@ Feature: User account tests
       | student28@library | 19Ceq2sT | Test Student 28 |
       | student29@library | WyIUNpDI | Test Student 29 |
 
-  @wip
   Scenario Outline: Verify dashboard page
     Given I am on the login page
     When I login as a <user>
