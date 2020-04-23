@@ -7,6 +7,7 @@ Feature: User account tests
     Then account holder name should be "Test Librarian 12"
 
     # TEST CASE
+  @all_accounts
   Scenario Outline: Verify user information <email>
     Given I am on the login page
     When I login using "<email>" and "<password>"
