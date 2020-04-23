@@ -7,7 +7,6 @@ Feature: User account tests
     Then account holder name should be "Test Librarian 12"
 
     # TEST CASE
-  @wip
   Scenario Outline: Verify user information <email>
     Given I am on the login page
     When I login using "<email>" and "<password>"
@@ -16,11 +15,11 @@ Feature: User account tests
    #TEST DATA
     @top_students
     Examples:
-      | email               | password | name              |
-      | student27@library   | kkMksO2i | Test Student 27   |
-      | student28@library   | 19Ceq2sT | Test Student 28   |
-      | student29@library   | WyIUNpDI | Test Student 29   |
-      | student30@library   | IaT9YI0I | Test Student 30   |
+      | email             | password | name            |
+      | student27@library | kkMksO2i | Test Student 27 |
+      | student28@library | 19Ceq2sT | Test Student 28 |
+      | student29@library | WyIUNpDI | Test Student 29 |
+      | student30@library | IaT9YI0I | Test Student 30 |
 
     @librarians
     Examples:
@@ -49,3 +48,19 @@ Feature: User account tests
       | student42@library   | zCm83mcJ | Test Student 42   |
       | student43@library   | 7F1rV4W8 | Test Student 43   |
       | student44@library   | BIXPElK5 | Test Student 44   |
+
+
+  @wip
+  Scenario Template: Another verify user information <name>
+    Given I am on the login page
+    When I login using following credentials:
+      | email    | <email>    |
+      | password | <password> |
+    Then account holder name should be "<name>"
+
+
+    Scenarios:
+      | email             | password | name            |
+      | student27@library | kkMksO2i | Test Student 27 |
+      | student28@library | 19Ceq2sT | Test Student 28 |
+      | student29@library | WyIUNpDI | Test Student 29 |
