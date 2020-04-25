@@ -8,7 +8,7 @@ Feature: Search functionality on the users page
 
   Scenario: Search accuracy
     When I search for "test"
-    Then table should contain rows with "test"
+    Then table should contain rows with "tests"
 
 
   Scenario: Table columns names
