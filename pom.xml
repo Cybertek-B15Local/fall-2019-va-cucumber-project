@@ -45,6 +45,7 @@
                        <include>**/FailedTestRunner.java</include>
                    </includes>
                    <testFailureIgnore>true</testFailureIgnore>
+                   <runOrder>alphabetical</runOrder>
                </configuration>
            </plugin>
        </plugins>
