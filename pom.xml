@@ -32,4 +32,21 @@
             <version>3.8.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+       <plugins>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>3.0.0-M4</version>
+               <configuration>
+                   <includes>
+                       <include>**/CukesRunner.java</include>
+                       <include>**/FailedTestRunner.java</include>
+                   </includes>
+                   <testFailureIgnore>true</testFailureIgnore>
+               </configuration>
+           </plugin>
+       </plugins>
+    </build>
 </project>
