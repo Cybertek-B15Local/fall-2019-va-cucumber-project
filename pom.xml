@@ -48,6 +48,10 @@
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <runOrder>alphabetical</runOrder>
+                    <parallel>methods</parallel>
+                    <threadCount>3</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <forkCount>2C</forkCount>
                 </configuration>
             </plugin>
             <plugin>

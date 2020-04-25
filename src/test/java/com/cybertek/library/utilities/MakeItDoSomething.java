@@ -12,7 +12,7 @@ public class MakeItDoSomething {
 
         for (int i = 0; i < 5; i++) {
             DoesSomething doesSomething = new DoesSomething();
-            doesSomething.run();
+            doesSomething.start();
         }
 
 
