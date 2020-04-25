@@ -39,7 +39,7 @@ public class UsersTableStepDefs {
             boolean found = id.contains(expectedString) ||
                     name.contains(expectedString) ||
                     email.contains(expectedString);
-            assertTrue(found);
+            assertTrue("Expedted string was not found in table: "+expectedString, found);
         }
 
     }
