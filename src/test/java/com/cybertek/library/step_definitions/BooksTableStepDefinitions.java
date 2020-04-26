@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BooksTableStepDefinitions {
@@ -53,6 +54,13 @@ public class BooksTableStepDefinitions {
         System.out.println("book.getName() = " + book.getName());
         System.out.println("book.getAuthor() = " + book.getAuthor());
         System.out.println("book.getYear() = " + book.getYear());
+
+        assertEquals("Book name did not match",
+                book.getName(), booksPage.bookName.getAttribute("value"));
+        assertEquals("Book author did not match",
+                book.getAuthor(), booksPage.author.getAttribute("value"));
+        assertEquals("Book year did not match",
+                    book.getYear(), booksPage.year.getAttribute("value"));
     }
 
 
