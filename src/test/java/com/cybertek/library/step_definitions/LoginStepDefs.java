@@ -72,7 +72,7 @@ public class LoginStepDefs {
 
 
     @Given("I login to application as a {word}")
-    public void i_login_to_application_as_a(String user) {
+    public void i_login_to_application_as_a(String user) throws Exception {
         String email = null, password = null;
         switch (user.toLowerCase()) {
             case LibraryConstants.LIBRARIAN:
@@ -83,6 +83,9 @@ public class LoginStepDefs {
                 email = ConfigurationReader.getProperty("student_email");
                 password = ConfigurationReader.getProperty("student_password");
                 break;
+            default:
+//                Assert.fail("Wrong user type is provided: "+user);
+                throw new Exception("Wrong user type is provided: "+user);
         }
         loginPage.login(email, password);
     }
