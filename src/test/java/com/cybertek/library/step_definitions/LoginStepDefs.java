@@ -68,4 +68,11 @@ public class LoginStepDefs {
         loginPage.login(email, password);
     }
 
+
+
+    @Given("I login to application as a {word}")
+    public void i_login_to_application_as_a(String user) {
+        System.out.println("Logging in as a "+ user);
+    }
+
 }
