@@ -43,6 +43,12 @@ public class UsersPage extends PageBase {
     @FindBy(id = "address")
     public WebElement address;
 
+    @FindBy(id = "user_group_id")
+    public WebElement group;
+
+    @FindBy(id = "status")
+    public WebElement status;
+
     @FindBy(css="a.page-link:not([title])")
     public List<WebElement> pagesList;
 
@@ -50,5 +56,12 @@ public class UsersPage extends PageBase {
         return new Select(showRecords);
     }
 
+    public Select getGroup(){
+        return new Select(group);
+    }
+
+    public Select getStatus(){
+        return new Select(status);
+    }
 
 }
