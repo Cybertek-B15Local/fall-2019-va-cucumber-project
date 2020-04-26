@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class Books extends PageBase {
+public class BooksPage extends PageBase {
 
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> allRows;
