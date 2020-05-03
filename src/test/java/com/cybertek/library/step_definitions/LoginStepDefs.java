@@ -19,10 +19,18 @@ public class LoginStepDefs {
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
+
+        String url = null;
+        if (System.getProperty("env") != null) {
+            url = ConfigurationReader.getProperty(System.getProperty("env")+"_url");
+
+        } else {
+            url = ConfigurationReader.getProperty("url");
+        }
+
         System.out.println("Going to the login page");
         // login
         // Driver.getDriver()  --> gives us a driver object
-        String url = ConfigurationReader.getProperty("url");
         Driver.getDriver().get(url);
 
     }
