@@ -27,7 +27,12 @@ public class Driver {
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
 
-            String browser = ConfigurationReader.getProperty("browser");
+            // check the command line argument browser. if it has value, use that value
+            // if no browser value is passed from command line, the user properties file
+            // mvn test -Dbrowser=remote-chrome
+            // mvn test -Dbrowser=remote-firefox
+            // mvn test -Dcucumber.filter.tags=@regression -Dbrowser=remote-firefox
+            String browser = System.getProperty("browser") != null ? System.getProperty("browser") : ConfigurationReader.getProperty("browser");
 
             switch (browser) {
                 case "chrome":
