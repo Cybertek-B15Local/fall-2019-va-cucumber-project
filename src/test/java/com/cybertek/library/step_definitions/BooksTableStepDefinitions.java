@@ -31,7 +31,7 @@ public class BooksTableStepDefinitions {
 
 
 
-    @When("I edit book {}")
+    @When("I edit/open book {}")
     public void i_edit_book_The_kiterunner(String book) {
         System.out.println("book = " + book);
         BrowserUtils.waitForClickability(booksPage.search, 5).sendKeys(book);
