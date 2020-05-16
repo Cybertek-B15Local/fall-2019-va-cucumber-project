@@ -63,5 +63,11 @@ public class BooksTableStepDefinitions {
                     book.getYear(), booksPage.year.getAttribute("value"));
     }
 
+    @Then("book information must match the database for {}")
+    public void book_information_must_match_the_database_for_The_kite_runner(String book) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 }

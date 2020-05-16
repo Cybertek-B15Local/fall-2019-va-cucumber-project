@@ -81,7 +81,6 @@ public class LoginStepDefs {
 
     @Given("I login to application as a {word}")
     public void i_login_to_application_as_a(String user) throws Exception {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         String email = null, password = null;
         switch (user.toLowerCase()) {
             case LibraryConstants.LIBRARIAN:

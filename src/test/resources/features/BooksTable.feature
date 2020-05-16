@@ -8,7 +8,6 @@ Feature: books table
     And I search for "The Goldfinch"
     Then books table should contain results matching The Goldfinch
 
-  @wip
   Scenario: Verify book information
     Given I am on the login page
     And I login to application as a librarian
