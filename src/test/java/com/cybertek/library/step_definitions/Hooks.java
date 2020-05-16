@@ -1,6 +1,8 @@
 package com.cybertek.library.step_definitions;
 
 
+import com.cybertek.library.utilities.ConfigurationReader;
+import com.cybertek.library.utilities.DBUtils;
 import com.cybertek.library.utilities.Driver;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
@@ -20,6 +22,13 @@ public class Hooks {
     @Before(value = "@db", order = 1)
     public void connect(){
         System.out.println("connecting to db");
+        String url = "jdbc:mysql://"+ ConfigurationReader.getProperty("qa2_db_host")+
+                ConfigurationReader.getProperty("qa2_db_name");
+        String username = ConfigurationReader.getProperty("qa2_db_username");
+        String password = ConfigurationReader.getProperty("qa2_db_password");
+
+        System.out.println(url);
+        DBUtils.createConnection(url, username, password);
     }
 
     @After
