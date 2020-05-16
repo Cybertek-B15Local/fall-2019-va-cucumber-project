@@ -4,6 +4,7 @@ import com.cybertek.library.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -27,13 +28,24 @@ public class BooksPage extends PageBase {
     @FindBy(name = "year")
     public WebElement year;
 
-    @FindBy(name = "author")
+    @FindBy(xpath = "(//input[@type='text'])[4]")
     public WebElement author;
+
+    @FindBy(id = "description")
+    public WebElement description;
+
+    @FindBy(id = "book_group_id")
+    public WebElement categoryElement;
 
     public WebElement editBook(String book) {
         String xpath = "//td[3][.='"+book+"']/../td/a";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
+
+    public Select categoryList(){
+        return new Select(categoryElement);
+    }
+
 
 
 }

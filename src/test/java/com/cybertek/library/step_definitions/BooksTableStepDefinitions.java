@@ -65,8 +65,19 @@ public class BooksTableStepDefinitions {
 
     @Then("book information must match the database for {}")
     public void book_information_must_match_the_database_for_The_kite_runner(String book) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String aName = booksPage.bookName.getAttribute("value");
+        String aAuthor = booksPage.author.getAttribute("value");
+        String aYear = booksPage.year.getAttribute("value");
+        String aIsbn = booksPage.isbn.getAttribute("value");
+        String aDescription = booksPage.description.getAttribute("value");
+        String aCategory = booksPage.categoryList().getFirstSelectedOption().getText();
+
+        System.out.println(aName);
+        System.out.println(aAuthor);
+        System.out.println(aYear);
+        System.out.println(aIsbn);
+        System.out.println(aDescription);
+        System.out.println(aCategory);
     }
 
 
