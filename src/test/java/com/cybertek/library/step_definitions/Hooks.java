@@ -52,6 +52,7 @@ public class Hooks {
     @After("@db")
     public void closeConnection() {
         System.out.println("closing connection to db");
+        DBUtils.destroy();
     }
 
 
@@ -64,5 +65,7 @@ public class Hooks {
     public void tearDownStep(){
         System.out.println("prints after every step");
     }
+
+    // break 4.ooo
 
 }

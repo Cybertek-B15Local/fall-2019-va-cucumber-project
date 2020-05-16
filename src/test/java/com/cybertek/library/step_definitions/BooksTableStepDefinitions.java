@@ -73,14 +73,31 @@ public class BooksTableStepDefinitions {
         String aDescription = booksPage.description.getAttribute("value");
         String aCategory = booksPage.categoryList().getFirstSelectedOption().getText();
 
-        // get the book info from the database
-        String sql = "SELECT b.name, b.isbn, b.year, b.author, bc.name as category, b.description\n" +
+        // get the expected book info from the database
+        String sql = "SELECT b.isbn, b.year, b.author, bc.name, b.description\n" +
                 "FROM books b\n" +
                 "JOIN book_categories bc\n" +
                 "ON b.book_category_id = bc.id\n" +
                 "WHERE b.name = '" + book + "';";
+        System.out.println(sql);
         Map<String, Object> dbData = DBUtils.getRowMap(sql);
         System.out.println(dbData);
+
+        DBUtils.getColumnNames(sql);
+
+        String eAuthor = dbData.get("author").toString();
+        String eYear = dbData.get("year").toString();
+        String eIsbn = dbData.get("isbn").toString();
+        String eDescription = dbData.get("description").toString();
+        String eCat = dbData.get("name").toString();
+
+        assertEquals("author did not match", eAuthor, aAuthor);
+        assertEquals("year did not match", eYear, aYear);
+        assertEquals("isbn did not match", eIsbn, aIsbn);
+        assertEquals("desctiption did not match", eDescription, aDescription);
+        assertEquals("category did not match", eCat, aCategory);
+
+
     }
 
 
