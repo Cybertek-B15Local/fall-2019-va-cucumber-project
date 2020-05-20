@@ -7,6 +7,7 @@ import com.cybertek.library.utilities.DBUtils;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,9 +114,13 @@ public class BooksTableStepDefinitions {
         System.out.println(exNames);
         // get the actual categories from UI as webelements
         // convert the web elements to list
-        booksPage.categoryList()
-
+        List<WebElement> optionsEl = booksPage.mainCategoryList().getOptions();
+        List<String> acNames = BrowserUtils.getElementsText(optionsEl);
+        System.out.println(acNames);
+        // remove the first option ALL from acList.
+        acNames.remove(0);
         // compare 2 lists
+        assertEquals("Categories did not match", exNames, acNames);
     }
 
 
