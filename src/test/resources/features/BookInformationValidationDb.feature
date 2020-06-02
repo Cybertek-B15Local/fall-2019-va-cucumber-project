@@ -8,7 +8,7 @@ Feature: Book information
     When I open book The kite runner
     Then book information must match the database for The kite runner
 
-  @wip @db
+  @db
   Scenario: Book categories validation
     Given I am on the login page
     And I login to application as a librarian

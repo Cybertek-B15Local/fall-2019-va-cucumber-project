@@ -5,6 +5,7 @@ import com.cybertek.library.utilities.ConfigurationReader;
 import com.cybertek.library.utilities.DBUtils;
 import com.cybertek.library.utilities.Driver;
 import io.cucumber.java.*;
+import io.restassured.RestAssured;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -17,12 +18,14 @@ public class Hooks {
         System.out.println("set up browser");
         Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //        Driver.getDriver().manage().window().fullscreen();
+        RestAssured.baseURI = ConfigurationReader.getProperty("qa2_base_url");
+
     }
 
     @Before(value = "@db", order = 1)
-    public void connect(){
+    public void connect() {
         System.out.println("connecting to db");
-        String url = "jdbc:mysql://"+ ConfigurationReader.getProperty("qa2_db_host")+
+        String url = "jdbc:mysql://" + ConfigurationReader.getProperty("qa2_db_host") +
                 ConfigurationReader.getProperty("qa2_db_name");
         String username = ConfigurationReader.getProperty("qa2_db_username");
         String password = ConfigurationReader.getProperty("qa2_db_password");
@@ -35,7 +38,7 @@ public class Hooks {
     public void tearDownScenario(Scenario scenario) {
         System.out.println("scenario.getSourceTagNames() = " + scenario.getSourceTagNames());
         System.out.println("scenario.getName() = " + scenario.getName());
-        scenario.write("Complete scenario: "+ scenario.getName());
+        scenario.write("Complete scenario: " + scenario.getName());
 
         if (scenario.isFailed()) {
             // take screenshot using selenium
@@ -56,13 +59,13 @@ public class Hooks {
     }
 
 
-//    @BeforeStep
+    //    @BeforeStep
     public void setUpStep() {
         System.out.println("prints before every step");
     }
 
-//    @AfterStep
-    public void tearDownStep(){
+    //    @AfterStep
+    public void tearDownStep() {
         System.out.println("prints after every step");
     }
 
