@@ -29,7 +29,7 @@ Feature: Add user end point test
 # UI:  open any book may be this one: The kite runner
 # UI, API:   verify that book information matches the response from  /get_book_by_id/{id}  endpoint
 #  where is the database?
-  @wip @db
+  @db
   Scenario: verify book information using get_book_by_id endpoint
     Given I am on the login page
     When I login as a librarian
