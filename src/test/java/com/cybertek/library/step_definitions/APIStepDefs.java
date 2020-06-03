@@ -51,7 +51,7 @@ public class APIStepDefs {
     @Then("book information must match the api for {}")
     public void book_information_must_match_the_api_for_The_kite_runner(String book) {
         // call the database to get the book id for
-        String query = "SELECT * FROM books WHERE name = '"+book+"'";
+        String query = "SELECT id FROM books WHERE name = '"+book+"'";
         System.out.println("query = " + query);
         String id = DBUtils.getCellValue(query).toString();
         System.out.println("Book id = " + id);
