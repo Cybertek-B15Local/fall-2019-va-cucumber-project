@@ -2,8 +2,10 @@ package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.LoginPage;
 import com.cybertek.library.utilities.AuthenticationUtility;
+import com.cybertek.library.utilities.DBUtils;
 import com.cybertek.library.utilities.LibraryUserUtility;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
@@ -40,4 +42,25 @@ public class APIStepDefs {
         LoginPage loginPage = new LoginPage();
         loginPage.login(email, password);
     }
+
+    @Then("book information must match the api for {}")
+    public void book_information_must_match_the_api_for_The_kite_runner(String book) {
+        // call the database to get the book id for
+        String query = "SELECT id FROM books WHERE name = '"+book+"'";
+        System.out.println("query = " + query);
+        String id = DBUtils.getCellValue(query).toString();
+        System.out.println("Book id = " + id);
+        // get the token
+        String token = AuthenticationUtility.getLibrarianToken();
+        // use the id to make the call to api
+        Response response = given().
+                log().all().
+                header("x-library-token", token).
+                pathParam("id", id).
+        when().
+                get("/get_book_by_id/{id}").
+                prettyPeek();
+        // verify response vs ui
+    }
+
 }
