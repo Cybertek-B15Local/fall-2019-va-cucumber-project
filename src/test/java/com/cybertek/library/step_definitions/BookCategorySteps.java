@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.equalTo;
 
 public class BookCategorySteps {
 
@@ -26,6 +29,7 @@ public class BookCategorySteps {
         for (Object object : dbNamesObj) {
             dbNames.add(object.toString());
         }
+        // the dorin way --> List<String> dbNames = new ArrayList(DBUtils.getColumnData(sqlQuery, "name"));
 
         // get category information from api
         String token = AuthenticationUtility.getLibrarianToken();
@@ -41,6 +45,10 @@ public class BookCategorySteps {
         List<WebElement> namesEl = booksPage.mainCategoryList().getOptions();
         List<String> uiNames = BrowserUtils.getElementsText(namesEl);
         uiNames.remove(0);
+
+        // compare the 3 lists
+        assertThat(uiNames, allOf(equalTo(apiNames), equalTo(dbNames)));
+
     }
 
 }
