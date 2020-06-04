@@ -1,6 +1,6 @@
 Feature: book categories
 
-  @wip
+  @db @wip
   Scenario: verify book categories
     Given I am on the login page
     And I login as a librarian
