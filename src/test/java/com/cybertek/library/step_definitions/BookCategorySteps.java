@@ -4,7 +4,9 @@ import com.cybertek.library.pages.BooksPage;
 import com.cybertek.library.utilities.AuthenticationUtility;
 import com.cybertek.library.utilities.BrowserUtils;
 import com.cybertek.library.utilities.DBUtils;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.openqa.selenium.WebElement;
 
@@ -18,6 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class BookCategorySteps {
 
+    String token;
 
     @Then("book categories must match api and db")
     public void book_categories_must_match_api_and_db() {
@@ -36,7 +39,7 @@ public class BookCategorySteps {
         Response response = given().
                 header("x-library-token", token).
                 log().all().
-        when().
+                when().
                 get("/get_book_categories").prettyPeek();
         response.then().statusCode(200);
         List<String> apiNames = response.jsonPath().getList("name");
@@ -49,6 +52,48 @@ public class BookCategorySteps {
         // compare the 3 lists
         assertThat(uiNames, allOf(equalTo(apiNames), equalTo(dbNames)));
 
+    }// BREAK 8.43
+
+
+    @Given("I get information for each user using get_user_by_id endpoint")
+    public void i_get_information_for_each_user_using_get_user_by_id_endpoint() {
+        // get ids of every one
+        token = AuthenticationUtility.getLibrarianToken();
+        List<String> idList = given().
+                header("x-library-token", token).
+                log().all().
+            when().
+                get("/get_all_users").prettyPeek().
+                jsonPath().getList("id");
+
+        // remove the admin user
+        idList.remove(0);
+
+        // for each id, call the get user by id endpoint
+        // since it is taking too long to run for each user, i will just get info for 10 people. change to for each to get for every one
+//        for (String id : idList) {
+        for (int i = 0; i < 10; i++) {
+            given().
+                    header("x-library-token", token).
+                    pathParam("id", idList.get(i)).
+                    log().all().
+            when().
+                    get("/get_user_by_id/{id}").peek();
+        }
+
     }
+
+    @When("I get the available groups using the get_user_groups endpoint")
+    public void i_get_the_available_groups_using_the_get_user_groups_endpoint() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("groups of non admin users should match the groups from get_user_groups")
+    public void groups_of_non_admin_users_should_match_the_groups_from_get_user_groups() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 }
