@@ -1,6 +1,7 @@
 package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.BooksPage;
+import com.cybertek.library.pojos.User;
 import com.cybertek.library.utilities.AuthenticationUtility;
 import com.cybertek.library.utilities.BrowserUtils;
 import com.cybertek.library.utilities.DBUtils;
@@ -11,16 +12,18 @@ import io.restassured.response.Response;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 
 public class BookCategorySteps {
 
     String token;
+    List<User> userList = new ArrayList<>();
+    List<User> groupIdList = new ArrayList<>();
 
     @Then("book categories must match api and db")
     public void book_categories_must_match_api_and_db() {
@@ -73,26 +76,34 @@ public class BookCategorySteps {
         // since it is taking too long to run for each user, i will just get info for 10 people. change to for each to get for every one
 //        for (String id : idList) {
         for (int i = 0; i < 10; i++) {
-            given().
+            User userPojo = given().
                     header("x-library-token", token).
                     pathParam("id", idList.get(i)).
                     log().all().
-            when().
-                    get("/get_user_by_id/{id}").peek();
+                when().
+                    get("/get_user_by_id/{id}").peek().as(User.class);
+            userList.add(userPojo);
         }
 
     }
 
     @When("I get the available groups using the get_user_groups endpoint")
     public void i_get_the_available_groups_using_the_get_user_groups_endpoint() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        groupIdList = given().
+                header("x-library-token", token).
+                log().all().
+            when().
+                get("/get_user_groups").peek().
+                jsonPath().getList("id");
     }
 
     @Then("groups of non admin users should match the groups from get_user_groups")
     public void groups_of_non_admin_users_should_match_the_groups_from_get_user_groups() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        // verify that each pojo object in the user list contains one of the ids from the groupList
+        for (User user : userList) {
+            assertThat(user.getUserGroupId(), in((List)groupIdList));
+        }
     }
 
 
